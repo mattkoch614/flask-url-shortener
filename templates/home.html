@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> 
+
+
+<div class="container is-max-widescreen">
+ 
+    <h1 class="title">URL Shortener</h1>
+
+    <form action="your-url" method="POST">
+
+        <div class="field">
+            <label class="label">Website URL</label>
+            <div class="control">
+              <input class="input" required name="url" value="" type="url" placeholder="http://some-long-url-you-want-to-shorten.com/link/1/2/3/4/">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Short Name</label>
+            <div class="control">
+              <input class="input" required name="code" value="" type="text" placeholder="">
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+              <button class="button is-link" type="submit">Shorten</button>
+            </div>
+          </div>
+    </form>
+
+</div>
+
+
