@@ -5,6 +5,14 @@
  
     <h1 class="title">URL Shortener</h1>
 
+    {% for message in get_flashed_messages() %}
+    <article class="message is-warning">
+      <div class="message-body">
+        {{ message }}
+      </div>
+    </article>
+    {% endfor %}
+
     <form action="your-url" method="POST">
 
         <div class="field">
