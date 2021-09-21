@@ -1,94 +1,94 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flask URL Shortener</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </head>
-  <body>
-  <section class="section">
-    <div class="container is-max-widescreen">
-      <h1 class="title">URL Shortener</h1>
+{% extends 'base.html' %}
 
-      {% for message in get_flashed_messages() %}
-      <article class="message is-warning">
-        <div class="message-body">
-          {{ message }}
+{% block title %}URL Shortener{% endblock %}
+
+{% block main %}
+
+<div class="columns is-mobile">
+  <div class="column">
+
+    <article class="panel">
+      <p class="panel-heading">
+        Website
+      </p>
+      <form action="your-url" method="POST" class="m-4 pb-4">
+
+        <div class="field">
+          <label class="label">Short Name</label>
+          <div class="control">
+            <input class="input" required name="code" value="" type="text" placeholder="">
+          </div>
         </div>
-      </article>
-      {% endfor %}
-  
-      <h5 class="subtitle is-5">Enter a URL</h5>
-      <form action="your-url" method="POST">
-  
-          <div class="field">
-              <label class="label">Website URL</label>
-              <div class="control">
-                <input class="input" required name="url" value="" type="url" placeholder="http://some-long-url-you-want-to-shorten.com/link/1/2/3/4/">
-              </div>
+
+        <div class="field">
+          <label class="label">Website URL</label>
+          <div class="control">
+            <input class="input" required name="url" value="" type="url"
+              placeholder="http://some-long-url-you-want-to-shorten.com/link/1/2/3/4/">
           </div>
-  
-          <div class="field">
-              <label class="label">Short Name</label>
-              <div class="control">
-                <input class="input" required name="code" value="" type="text" placeholder="">
-              </div>
+        </div>
+      
+        <div class="field">
+          <div class="control">
+            <button class="button is-link is-fullwidth" type="submit">Shorten</button>
           </div>
-  
-          <div class="field">
-              <div class="control">
-                <button class="button is-link" type="submit">Shorten</button>
-              </div>
-            </div>
+        </div>
       </form>
-  
-      <h5 class="subtitle is-5">Upload a File</h5>
-      <form action="your-url" method="POST" enctype="multipart/form-data">
-  
-        <div class="file">
-          <label class="file-label">
-            <input class="file-input" type="file" name="file" required value="">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload"></i>
-              </span>
-              <span class="file-label">
-                Choose a file…
-              </span>
-            </span>
-          </label>
-        </div>
-  
+      
+    </article>
+    
+
+  </div>
+
+  <div class="column">
+
+    <article class="panel">
+      <p class="panel-heading">
+        File
+      </p>
+
+      <form action="your-url" method="POST" enctype="multipart/form-data" class="m-4 pb-4">
         <div class="field">
-            <label class="label">Short Name</label>
-            <div class="control">
-              <input class="input" required name="code" value="" type="text" placeholder="">
-            </div>
-        </div>
-  
-        <div class="field">
-            <div class="control">
-              <button class="button is-link" type="submit">Shorten</button>
-            </div>
+          <label class="label">Short Name</label>
+          <div class="control">
+            <input class="input" required name="code" value="" type="text" placeholder="">
           </div>
-    </form>
+        </div>
 
-    {% if codes %}
+        <div class="field">
+          <label class="label">Website URL</label>
+          <div class="control py-2">
+            <input class="is-size-6" type="file" name="file" required value="">
+          </div>
+        </div>
+      
+        <div class="field">
+          <div class="control">
+            <button class="button is-link is-fullwidth" type="submit">Shorten</button>
+          </div>
+        </div>
+      </form>
+      
+    </article>
 
-    <h2>Codes you have created</h2>
+  </div>
 
-    <ul>
-      {% for code in codes %}
+</div>
+
+{% if codes %}
+
+<h3 class="title is-3">Codes you have created</h3>
+<div class="content">
+  <ul>
+    {% for code in codes %}
+    <a href="{{ url_for('redirect_to_url', code=code) }}">
       <li>{{ code }}</li>
-      {% endfor %}
-    </ul>
+    </a>
+    {% endfor %}
+  </ul>
+</div>
 
-    {% endif %}
 
+{% endif %}
 
-    </div>
-  </section>
-  </body>
-</html>
+{% endblock %}

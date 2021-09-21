@@ -1,12 +1,13 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> 
+{% extends 'base.html' %}
 
+{% block title %}Page Not Found{% endblock %}
 
-<div class="container is-max-widescreen">
- 
-    <h1 class="title">Page Not Found</h1>
+{% block main %}
 
-    <p>We couldn't find what you are looking for. Come visit our homepage :)</p>
+<h1 class="title">Page Not Found</h1>
 
-    <p><a href="/">Home</a></p>
+<p>We couldn't find what you are looking for. Come visit our homepage :)</p>
 
-</div>  
+<p><a href="/">Home</a></p>
+
+{% endblock %}
