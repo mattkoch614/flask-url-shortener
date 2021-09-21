@@ -8,7 +8,7 @@
 <h1 class="title">URL Created</h1>
 
 <div class="control">
-    <input class="input" id="new_url" value="{{ url_for('redirect_to_url', code=code, _external=True) }}" readonly>
+    <input class="input" id="new_url" value="{{ url_for('urlshort.redirect_to_url', code=code, _external=True) }}" readonly>
 </div>
 <p>
     <button onclick="myFunction()" class="button is-link">Copy URL</button>

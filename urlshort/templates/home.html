@@ -81,7 +81,7 @@
 <div class="content">
   <ul>
     {% for code in codes %}
-    <a href="{{ url_for('redirect_to_url', code=code) }}">
+    <a href="{{ url_for('urlshort.redirect_to_url', code=code) }}">
       <li>{{ code }}</li>
     </a>
     {% endfor %}

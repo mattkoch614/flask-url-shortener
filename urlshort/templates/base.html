@@ -27,10 +27,10 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-light" href="/api">
+                <a class="button is-light" href="{{ url_for('urlshort.session_api') }}">
                   API
                 </a>
-                <a class="button is-info is-outlined">
+                <a class="button is-info is-outlined" href="{{ url_for('urlshort.home') }}">
                   New URL
                 </a>
               </div>
